@@ -1,2 +1,0 @@
-{"timestamp": "2025-12-21T20:41:47.421375", "ip": "127.0.0.1", "path": "/search", "payload": "<script>alert(1)</script>", "type": "suspicious_input", "pattern": "<script"}
-{"timestamp": "2025-12-21T20:41:59.816858", "ip": "127.0.0.1", "path": "/login", "payload": "admin:admin or 1=1", "type": "suspicious_input", "pattern": "or 1=1"}
