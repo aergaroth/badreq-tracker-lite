@@ -2,5 +2,7 @@ BadReq Tracker Lite – lightweight DevSecOps application that detects and logs 
 
 
 
+Runtime-generated files (logs, events) are intentionally excluded from version control.
+
 ## License
 This project is licensed under the GNU General Public License v3.0.
