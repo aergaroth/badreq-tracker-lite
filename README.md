@@ -33,6 +33,8 @@ The project is designed as an **educational and portfolio-ready example** of:
 
 ## Project Structure
 
+```bash
+
 ├── app/
 │ ├── main.py # Flask application
 │ ├── monitor.py # Request analysis and detection logic
