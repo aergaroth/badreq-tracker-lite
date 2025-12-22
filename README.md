@@ -54,6 +54,7 @@ The project is designed as an **educational and portfolio-ready example** of:
 ## Running Locally
 
 ### Requirements
+
 - Python 3.10+
 - pip
 
@@ -71,10 +72,12 @@ http://localhost:5000
 ## Running with Docker
 
 Build image:
+
 ```bash
 docker run -p 5000:5000 badreq-tracker-lite
 ```
 Run container
+
 ```bash
 docker run -p 5000:5000 badreq-tracker-lite
 ```
@@ -82,17 +85,17 @@ docker run -p 5000:5000 badreq-tracker-lite
 ---
 
 ## Example Requests
-
+```
 curl "http://localhost:5000/search?q=<script>alert(1)</script>"
-
-## Suspicious login attempt
-
+```
+### Suspicious login attempt
+```
 curl -X POST http://localhost:5000/login \
   -H "Content-Type: application/json" \
   -d '{"username":"admin","password":"admin or 1=1"}'
-
-# Detected events are logged to a runtime-generated events.json file
-# (which is intentionally excluded from version control).
+```
+Detected events are logged to a runtime-generated events.json file
+(which is intentionally excluded from version control).
 
 ---
 
