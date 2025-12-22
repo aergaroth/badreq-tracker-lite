@@ -1,5 +1,8 @@
 # BadReq Tracker Lite
 
+[![CI](https://github.com/aergaroth/badreq-tracker-lite/actions/workflows/ci.yml/badge.svg)](https://github.com/aergaroth/badreq-tracker-lite/actions/workflows/ci.yml)
+
+
 BadReq Tracker Lite – lightweight DevSecOps application that detects and logs suspicious HTTP requests (SQLi, XSS, brute-force patterns) in runtime.
 
 The project is designed as an **educational and portfolio-ready example** of:
@@ -43,26 +46,46 @@ The project is designed as an **educational and portfolio-ready example** of:
 │   └── __init__.py
 ├── tests/
 │   └── test_monitor.py
+├── .github/
+│   └── workflows/
+│       └── ci.yml
 ├── Dockerfile
 ├── requirements.txt
 ├── .gitignore
 ├── .dockerignore
+├── LICENSE
 └── README.md
+
 ```
 ---
 
-## Running Locally
+## Local Development
 
 ### Requirements
 
-- Python 3.10+
+#### Runtime
+
+- Python **3.10+**
 - pip
 
+#### Development / CI
+
+- pytest (unit tests)
+- bandit (statioc security analysis)
+
+> Development tools are used locally and in CI pipelines.
+> They are not required to run the application in production.
+
+### Instalation
 ```bash
 pip install -r requirements.txt
+```
+### Run
+``` bash
 python -m app.main
 ```
-
+---
+ 
 ## Application will be available at:
 ```
 http://localhost:5000
@@ -76,7 +99,7 @@ Build image:
 ```bash
 docker run -p 5000:5000 badreq-tracker-lite
 ```
-Run container
+Run container:
 
 ```bash
 docker run -p 5000:5000 badreq-tracker-lite
