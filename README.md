@@ -97,7 +97,7 @@ http://localhost:5000
 Build image:
 
 ```bash
-docker run -p 5000:5000 badreq-tracker-lite
+docker build -t badreq-tracker-lite .
 ```
 Run container:
 
