@@ -1,3 +1,5 @@
+# BadReq Tracker Lite
+
 BadReq Tracker Lite – lightweight DevSecOps application that detects and logs suspicious HTTP requests (SQLi, XSS, brute-force patterns) in runtime.
 
 The project is designed as an **educational and portfolio-ready example** of:
@@ -33,18 +35,20 @@ The project is designed as an **educational and portfolio-ready example** of:
 
 ## Project Structure
 
-```bash
-
+```text
+.
 ├── app/
-│ ├── main.py # Flask application
-│ ├── monitor.py # Request analysis and detection logic
-│ └── init.py
+│   ├── main.py          # Flask application
+│   ├── monitor.py       # Request analysis and detection logic
+│   └── __init__.py
+├── tests/
+│   └── test_monitor.py
 ├── Dockerfile
 ├── requirements.txt
 ├── .gitignore
 ├── .dockerignore
 └── README.md
-
+```
 ---
 
 ## Running Locally
@@ -56,20 +60,24 @@ The project is designed as an **educational and portfolio-ready example** of:
 ```bash
 pip install -r requirements.txt
 python -m app.main
-
+```
 
 ## Application will be available at:
-
+```
 http://localhost:5000
-
+```
 ---
 
 ## Running with Docker
 
-# build image:
+Build image:
+```bash
 docker run -p 5000:5000 badreq-tracker-lite
-# run container
+```
+Run container
+```bash
 docker run -p 5000:5000 badreq-tracker-lite
+```
 
 ---
 
@@ -90,11 +98,11 @@ curl -X POST http://localhost:5000/login \
 
 ## Security Notes
 
--Application runs as a non-root user inside the container
+- Application runs as a non-root user inside the container
 
--Runtime logs and artifacts are excluded via .gitignore and .dockerignore
+- Runtime logs and artifacts are excluded via .gitignore and .dockerignore
 
--No secrets or credentials are stored in the repository
+- No secrets or credentials are stored in the repository
 
 ---
 
@@ -102,15 +110,15 @@ curl -X POST http://localhost:5000/login \
 
 Planned improvements:
 
--Unit tests for detection logic (pytest)
+- Unit tests for detection logic (pytest)
 
--CI pipeline (GitHub Actions)
+- CI pipeline (GitHub Actions)
 
--Static security analysis (Bandit)
+- Static security analysis (Bandit)
 
--Metrics and monitoring (Prometheus)
+- Metrics and monitoring (Prometheus)
 
--Alerting (Slack / webhook)
+- Alerting (Slack / webhook)
 
 ## License
 This project is licensed under the GNU General Public License v3.0.
