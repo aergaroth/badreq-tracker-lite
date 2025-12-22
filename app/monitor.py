@@ -1,5 +1,4 @@
-# app/monitor.py
-from datetime import datetime
+from datetime import datetime, UTC
 
 SUSPICIOUS_PATTERNS = [
     "select",
@@ -18,7 +17,7 @@ def analyze_request(ip: str, path: str, payload: str | None):
     for pattern in SUSPICIOUS_PATTERNS:
         if pattern in payload_lower:
             return {
-                "timestamp": datetime.utcnow().isoformat(),
+                "timestamp": datetime.now(UTC).isoformat(),
                 "ip": ip,
                 "path": path,
                 "payload": payload,
