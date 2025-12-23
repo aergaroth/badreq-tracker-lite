@@ -1,7 +1,11 @@
 # BadReq Tracker Lite
 
 [![CI](https://github.com/aergaroth/badreq-tracker-lite/actions/workflows/ci.yml/badge.svg)](https://github.com/aergaroth/badreq-tracker-lite/actions/workflows/ci.yml)
-
+[![CI](https://github.com/aergaroth/badreq-tracker-lite/actions/workflows/ci.yml/badge.svg)](https://github.com/aergaroth/badreq-tracker-lite/actions/workflows/ci.yml)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![Prometheus](https://img.shields.io/badge/metrics-Prometheus-orange)
+![SAST](https://img.shields.io/badge/SAST-Bandit-yellow)
 
 **BadReq Tracker Lite** – lightweight DevSecOps application that detects and logs suspicious HTTP requests (SQLi, XSS, brute-force patterns) in runtime.
 
