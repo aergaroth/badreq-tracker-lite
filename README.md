@@ -132,6 +132,23 @@ Detected events are logged to a runtime-generated events.json file
 
 ---
 
+
+## Metrics & Monitoring
+
+The application exposes Prometheus-compatible metrics at:
+
+```bash
+/metrics
+```
+
+### Custom security metrics
+- `badreq_requests_total` – total number of HTTP requests
+- `badreq_suspicious_requests_total` – total number of detected suspicious requests
+- `badreq_suspicious_requests_by_pattern` – breakdown of suspicious requests by detected pattern
+
+Default Python and process metrics are also exposed to provide runtime context.
+
+
 ## Roadmap
 
 Planned improvements:

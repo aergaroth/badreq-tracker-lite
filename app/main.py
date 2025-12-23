@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import json
 from app.monitor import analyze_request
+from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
 
 app = Flask(__name__)
 
@@ -48,6 +49,11 @@ def search():
 @app.route("/health", methods=["GET"])
 def health():
     return jsonify({"status": "healthy"}), 200
+
+
+@app.route("/metrics")
+def metrics():
+    return generate_latest(), 200, {"Content-Type": CONTENT_TYPE_LATEST}
 
 
 if __name__ == "__main__":
