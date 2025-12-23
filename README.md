@@ -106,6 +106,33 @@ docker run -p 5000:5000 badreq-tracker-lite
 
 ---
 
+## Running with Docker Compose (Monitoring stack)
+
+Docker Compose is used to run the application together with Prometheus
+for metrics scraping and security observability.
+
+### Requirements
+
+Docker
+
+Docker Compose (v2)
+
+Docker Compose v2 is used via the Docker CLI plugin (`docker compose`).
+
+
+### Run
+```bash
+docker compose up --build
+```
+
+This will start:
+
+- the application on ``` http://localhost:5000```
+
+- Prometheus on ``` http://localhost:9090```
+
+---
+
 ## Example Requests
 ```
 curl "http://localhost:5000/search?q=<script>alert(1)</script>"
