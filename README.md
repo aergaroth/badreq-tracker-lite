@@ -3,7 +3,7 @@
 [![CI](https://github.com/aergaroth/badreq-tracker-lite/actions/workflows/ci.yml/badge.svg)](https://github.com/aergaroth/badreq-tracker-lite/actions/workflows/ci.yml)
 
 
-BadReq Tracker Lite – lightweight DevSecOps application that detects and logs suspicious HTTP requests (SQLi, XSS, brute-force patterns) in runtime.
+**BadReq Tracker Lite** – lightweight DevSecOps application that detects and logs suspicious HTTP requests (SQLi, XSS, brute-force patterns) in runtime.
 
 The project is designed as an **educational and portfolio-ready example** of:
 - runtime request inspection,
@@ -19,9 +19,12 @@ The project is designed as an **educational and portfolio-ready example** of:
 ## Features
 
 - Runtime detection of suspicious HTTP requests (SQLi, XSS, traversal)
-- Security event logging and Prometheus metrics
-- REST API (Flask) with containerized, non-root execution
-- Automated CI with testing and SAST (Bandit)
+- Structured security event logging in JSON format
+- Prometheus-compatible metrics for security observability
+- REST API built with Flask
+- Containerized application running as a **non-root user**
+- Automated CI pipeline with testing and static security analysis (Bandit)
+
 
 ---
 
@@ -32,6 +35,7 @@ The project is designed as an **educational and portfolio-ready example** of:
 - **Docker**
 - JSON-based event logging (runtime)
 - CI/CD ready (tests and security scans)
+- Prometheus (metrics & monitoring)
 
 ---
 
@@ -48,6 +52,9 @@ The project is designed as an **educational and portfolio-ready example** of:
 ├── .github/
 │   └── workflows/
 │       └── ci.yml
+├── monitoring/
+│   └── prometheus.yml
+├── docker-compose.yml
 ├── Dockerfile
 ├── requirements.txt
 ├── .gitignore
@@ -70,7 +77,7 @@ The project is designed as an **educational and portfolio-ready example** of:
 #### Development / CI
 
 - pytest (unit tests)
-- bandit (statioc security analysis)
+- bandit (static security analysis)
 
 > Development tools are used locally and in CI pipelines.
 > They are not required to run the application in production.
@@ -83,9 +90,7 @@ pip install -r requirements.txt
 ``` bash
 python -m app.main
 ```
----
- 
-## Application will be available at:
+Application will be available at:
 ```
 http://localhost:5000
 ```
@@ -106,7 +111,7 @@ docker run -p 5000:5000 badreq-tracker-lite
 
 ---
 
-## Running with Docker Compose (Monitoring stack)
+## Running with Docker Compose (Observability Stack)
 
 Docker Compose is used to run the application together with Prometheus
 for metrics scraping and security observability.
@@ -115,10 +120,7 @@ for metrics scraping and security observability.
 
 Docker
 
-Docker Compose (v2)
-
-Docker Compose v2 is used via the Docker CLI plugin (`docker compose`).
-
+Docker Compose (v2) (Docker CLI plugin)
 
 ### Run
 ```bash
@@ -127,32 +129,33 @@ docker compose up --build
 
 This will start:
 
-- the application on ``` http://localhost:5000```
+- Application: ``` http://localhost:5000```
 
-- Prometheus on ``` http://localhost:9090```
+- Prometheus UI: ``` http://localhost:9090```
 
 ---
 
 ## Example Requests
+Suspicious search request:
 ```
 curl "http://localhost:5000/search?q=<script>alert(1)</script>"
 ```
-### Suspicious login attempt
+Suspicious login attempt:
 ```
 curl -X POST http://localhost:5000/login \
   -H "Content-Type: application/json" \
   -d '{"username":"admin","password":"admin or 1=1"}'
 ```
-Detected events are logged to a runtime-generated events.json file
+Detected events are logged to a runtime-generated  ``` events.json``` file
 (which is intentionally excluded from version control).
 
 ---
 
 ## Security Notes
 
-- Application runs as a non-root user inside the container
+- Application runs as a **non-root user** inside the container
 
-- Runtime logs and artifacts are excluded via .gitignore and .dockerignore
+- Runtime logs and artifacts are excluded via ```.gitignore``` and ```.dockerignore```
 
 - No secrets or credentials are stored in the repository
 
@@ -180,12 +183,11 @@ Default Python and process metrics are also exposed to provide runtime context.
 ### Implemented
 - Runtime detection of suspicious HTTP requests (SQLi, XSS, brute-force patterns)
 - Unit tests for detection logic (pytest)
-- CI pipeline with security scanning (GitHub Actions + Bandit)
-- Prometheus-compatible metrics for security observability
+- CI pipeline with automated testing and SAST (GitHub Actions + Bandit)
+- Prometheus-compatible metrics and monitoring via Docker Compose
 - Dockerized application running as a non-root user
 
 ### Next steps
-- Prometheus integration via docker-compose
 - Basic security alerting based on metrics (threshold-based)
 - Configuration separation for development and production environments
 
