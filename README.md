@@ -29,6 +29,32 @@ The project is designed as an **educational and portfolio-ready example** of:
 - Automated CI pipeline with testing and static security analysis (Bandit)
 
 
+## Production Use Cases
+
+BadReq Tracker Lite is designed as a **lightweight security observability component** rather than a full-scale security platform.
+
+It can be realistically used in production environments as:
+
+- An **early-warning signal** for suspicious traffic patterns before introducing a full WAF or SIEM
+- A **security telemetry sidecar** for internal services and APIs
+- A **signal source** for alerting and dashboards based on Prometheus metrics
+- A **development and staging environment guardrail**, providing visibility into malformed or malicious requests
+- A **learning and validation tool** for DevSecOps and SRE teams to understand real traffic patterns
+
+The application intentionally focuses on **detection and visibility**, leaving enforcement decisions to
+upstream systems such as reverse proxies, API gateways, or WAFs.
+
+> In production, BadReq Tracker Lite would typically run behind a reverse proxy  
+> and feed metrics into a centralized monitoring or alerting system.
+
+## Why It Matters
+
+In many real-world environments, full security platforms are introduced too late
+or without sufficient visibility into actual traffic.
+
+BadReq Tracker Lite provides **immediate insight** with minimal operational overhead,
+making it a practical first step toward more advanced security controls.
+
 ---
 
 ## Tech Stack
