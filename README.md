@@ -132,7 +132,6 @@ Detected events are logged to a runtime-generated events.json file
 
 ---
 
-
 ## Metrics & Monitoring
 
 The application exposes Prometheus-compatible metrics at:
@@ -148,20 +147,28 @@ The application exposes Prometheus-compatible metrics at:
 
 Default Python and process metrics are also exposed to provide runtime context.
 
+---
 
 ## Roadmap
 
-Planned improvements:
-
+### Implemented
+- Runtime detection of suspicious HTTP requests (SQLi, XSS, brute-force patterns)
 - Unit tests for detection logic (pytest)
+- CI pipeline with security scanning (GitHub Actions + Bandit)
+- Prometheus-compatible metrics for security observability
+- Dockerized application running as a non-root user
 
-- CI pipeline (GitHub Actions)
+### Next steps
+- Prometheus integration via docker-compose
+- Basic security alerting based on metrics (threshold-based)
+- Configuration separation for development and production environments
 
-- Static security analysis (Bandit)
+### Possible extensions
+- Grafana dashboards for security metrics
+- GeoIP enrichment for detected requests
+- Infrastructure-as-Code deployment (Terraform)
 
-- Metrics and monitoring (Prometheus)
-
-- Alerting (Slack / webhook)
+---
 
 ## License
 This project is licensed under the GNU General Public License v3.0.
@@ -169,5 +176,5 @@ This project is licensed under the GNU General Public License v3.0.
 ## Author
 Sebastian Grochowski
 
-Created as a DevSecOps portfolio project.
+*Created as a portfolio project.*
 
