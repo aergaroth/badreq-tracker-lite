@@ -18,11 +18,10 @@ The project is designed as an **educational and portfolio-ready example** of:
 
 ## Features
 
-- Detects suspicious request payloads (SQLi, XSS, path traversal patterns)
-- Logs detected events in structured JSON format
-- Simple REST API (Flask)
-- Dockerized application running as a **non-root user**
-- Clean separation between runtime artifacts and source code
+- Runtime detection of suspicious HTTP requests (SQLi, XSS, traversal)
+- Security event logging and Prometheus metrics
+- REST API (Flask) with containerized, non-root execution
+- Automated CI with testing and SAST (Bandit)
 
 ---
 
@@ -32,7 +31,7 @@ The project is designed as an **educational and portfolio-ready example** of:
 - **Flask**
 - **Docker**
 - JSON-based event logging (runtime)
-- CI/CD ready (tests and security scans planned)
+- CI/CD ready (tests and security scans)
 
 ---
 
