@@ -11,6 +11,7 @@ services:
     container_name: badreq-prometheus
     volumes:
       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./monitoring/rules:/etc/prometheus/rules:ro
     ports:
       - "9090:9090"
     depends_on:

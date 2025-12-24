@@ -1,0 +1,22 @@
+groups:
+- name: badreq-security-alerts
+  rules:
+
+  - alert: HighSuspiciousRequestRate
+    expr: rate(badreq_suspicious_requests_total[1m]) > 0.2
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High rate of suspicious HTTP requests"
+      description: "Suspicious request rate exceeded 0.2 req/s for 2 minutes."
+
+  - alert: SuddenSpikeInLoginTraffic
+    expr: rate(badreq_requests_total[1m]) > 2
+    for: 1m
+    labels:
+      severity: info
+    annotations:
+      summary: "Traffic spike detected"
+      description: "Login endpoint traffic increased unexpectedly."
+
