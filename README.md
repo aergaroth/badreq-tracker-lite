@@ -215,9 +215,10 @@ Default Python and process metrics are also exposed to provide runtime context.
 - CI pipeline with automated testing and SAST (GitHub Actions + Bandit)
 - Prometheus-compatible metrics and monitoring via Docker Compose
 - Dockerized application running as a non-root user
+- Basic security alerting based on metrics (threshold-based)
 
 ### Next steps
-- Basic security alerting based on metrics (threshold-based)
+
 - Configuration separation for development and production environments
 
 ### Possible extensions
