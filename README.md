@@ -82,7 +82,10 @@ making it a practical first step toward more advanced security controls.
 │   └── workflows/
 │       └── ci.yml
 ├── monitoring/
-│   └── prometheus.yml
+│   ├── alertmanager.yml
+│   ├── prometheus.yml
+│   └── rules
+│       └── alerts.yml
 ├── docker-compose.yml
 ├── Dockerfile
 ├── requirements.txt
@@ -162,9 +165,12 @@ This will start:
 
 - Prometheus UI: ``` http://localhost:9090```
 
+- Alertmanager UI: ``` http://localhost:9093```
+
 ---
 
 ## Example Requests
+
 Suspicious search request:
 ```
 curl "http://localhost:5000/search?q=<script>alert(1)</script>"
@@ -177,16 +183,6 @@ curl -X POST http://localhost:5000/login \
 ```
 Detected events are logged to a runtime-generated  ``` events.json``` file
 (which is intentionally excluded from version control).
-
----
-
-## Security Notes
-
-- Application runs as a **non-root user** inside the container
-
-- Runtime logs and artifacts are excluded via ```.gitignore``` and ```.dockerignore```
-
-- No secrets or credentials are stored in the repository
 
 ---
 
@@ -207,6 +203,28 @@ Default Python and process metrics are also exposed to provide runtime context.
 
 ---
 
+## Alerting Notes
+
+Alerting is implemented using **Prometheus rules and Alertmanager**.
+
+Slack notifications are demonstrated using **Incoming Webhooks**.
+No secrets or webhook URLs are stored in the repository.
+
+>In production environments, legacy webhooks should be replaced by a Slack App,
+>a dedicated webhook receiver, or an incident management system.
+
+---
+
+## Security Notes
+
+- Application runs as a **non-root user** inside the container
+
+- Runtime logs and artifacts are excluded via ```.gitignore``` and ```.dockerignore```
+
+- No secrets or credentials are stored in the repository
+
+---
+
 ## Roadmap
 
 ### Implemented
@@ -214,16 +232,14 @@ Default Python and process metrics are also exposed to provide runtime context.
 - Unit tests for detection logic (pytest)
 - CI pipeline with automated testing and SAST (GitHub Actions + Bandit)
 - Prometheus-compatible metrics and monitoring via Docker Compose
-- Dockerized application running as a non-root user
-- Basic security alerting based on metrics (threshold-based)
+- Metric-based security alerting
+- Non-root containerized deployment
 
-### Next steps
-
-- Configuration separation for development and production environments
 
 ### Possible extensions
 - Grafana dashboards for security metrics
 - GeoIP enrichment for detected requests
+- Kubernetes deployment
 - Infrastructure-as-Code deployment (Terraform)
 
 ---
